@@ -8,16 +8,11 @@ import { persistStore } from 'redux-persist'
 import { PersistGate } from 'redux-persist/es/integration/react'
 import SplashScreen from 'react-native-splash-screen'
 import { View, Text } from 'react-native';
-import codePush from 'react-native-code-push';
 
 
-class App extends React.Component {
+export default class App extends React.Component {
 
-  componentDidMount(){
-    codePush.sync({
-      installMode: codePush.InstallMode.IMMEDIATE
-    })
-  }
+  
   render() {
     let persistor = persistStore(Store)
     return (
@@ -29,10 +24,3 @@ class App extends React.Component {
     )
   }
 }
-
-let codePushOptions = {
-  checkFrequency: codePush.CheckFrequency.ON_APP_RESUME,
-  installMode: codePush.InstallMode.IMMEDIATE
-}
-
-export default App = codePush(codePushOptions)(App)
